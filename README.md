@@ -32,3 +32,12 @@ The system uses a multi-layered, modular architecture to ensure scalability:
 * **Middleware Layer:** Manages communication with external AI APIs and notification services.
 * **Data Access Layer:** Handles database operations and query handlers.
 * **Database Layer:** Securely stores all system data, users, and logs.
+
+## AI Workflow & Dual-Model Validation
+The backend triggers concurrent requests to OpenAI GPT-4o and Google Gemini 1.5 Pro using a Chain-of-Thought (CoT) prompting strategy. This allows the system to cross-reference AI outputs and reduce hallucination rates before human moderation. 
+
+The knowledge base utilizes Vector Embeddings (MongoDB Atlas Vector Search) to perform semantic similarity checks and retrieve verified academic answers via a RAG framework.
+
+## Security Protocols
+* **Authentication:** JSON Web Tokens (JWT) with RSA-256 secure login and role-based access control.
+* Data transmission is secured via HTTPS, and the human-in-the-loop validation strictly prevents inaccurate AI-generated responses from reaching the end users.
